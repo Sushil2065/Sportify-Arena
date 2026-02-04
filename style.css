@@ -1,0 +1,386 @@
+/* --- 1. VARIABLES & RESET (Same as Home Page) --- */
+:root {
+    --primary-orange: #ff6b00;
+    --glass-bg: rgba(255, 255, 255, 0.05); /* See-through white */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --dark-bg: #1a1a1a;
+    --text-shadow-color: #8a3c00;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* --- 2. MAIN BACKGROUND --- */
+#Containeer {
+    min-height: 100vh;
+    width: 100vw;
+    /* Consistent Background with Home Page */
+    background-color: var(--dark-bg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url("Sportify.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax feel */
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- 3. HEADER (The Top Bar) --- */
+#Header {
+    width: 100%;
+    padding: 20px 40px;
+    background: #ff6b00(255, 124, 1, 0.6); /* Darker glass for header */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--primary-orange);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns title to left */
+}
+
+#Header h1 {
+    font-family: 'Russo One', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: #fff;
+    /* The 3D Text Effect (Scaled down from home page) */
+    text-shadow: 
+        2px 2px 0px var(--primary-orange),
+        4px 4px 0px var(--text-shadow-color);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#Header h1:hover {
+    transform: scale(1.05);
+}
+
+/* --- 4. BODY LAYOUT (The Split View) --- */
+#Body {
+    display: flex;
+    width: 100%;
+    max-width: 1400px; /* Prevents it from getting too wide on huge screens */
+    margin: 0 auto; /* Centers the body */
+    padding: 0 20px 20px 20px;
+    gap: 20px;
+    height: calc(100vh - 100px); /* Fill remaining height */
+}
+
+/* --- 5. THE GLASS PANELS (Items & Livecart) --- */
+
+/* Shared styles for both panels */
+/* Update this section in your style.css */
+
+/* Update this section in your style.css */
+
+/* Update this in style.css */
+
+#Items, #Livecart {
+    /* 1. CRYSTAL CLEAR SHINE (Lighter Gradient) */
+    /* Top is slightly white (highlight), bottom is clear */
+    background: linear-gradient(
+        180deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.01) 100%
+    );
+
+    /* 2. GLOSSY HIGHLIGHTS */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle outline */
+    border-top: 1px solid rgba(255, 255, 255, 0.8); /* Very Bright Top Edge (Reflection) */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Faint bottom edge */
+
+    /* 3. INNER GLOW */
+    /* This adds the "thickness" to the clear material */
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.2), /* Softer shadow underneath */
+        inset 0 1px 0 rgba(255, 255, 255, 0.4); /* Inner rim highlight */
+
+    /* Standard Layout Styling */
+    border-radius: 20px;
+    padding: 20px;
+    
+    /* Text Color */
+    /* Since the box is clear, ensure your text is readable against your background image */
+    color: #fff; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6); /* Adds contrast to text so it pops on any background */
+
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+#Items:hover, #Livecart:hover {
+    background: linear-gradient(
+        180deg, 
+        rgba(255, 255, 255, 0.25) 0%, 
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border-top-color: #fff;
+}
+
+/* Optional: Make it SHINE brighter when you hover over it */
+#Items:hover, #Livecart:hover {
+    border-top-color: var(--primary-orange); /* Top edge turns orange */
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.1); /* Stronger inner gloss */
+    transform: translateY(-2px); /* Lifts up slightly */
+}
+
+/* Specific Layout styling */
+#Items {
+    flex: 3; /* Takes up 75% of the space */
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+}
+
+#Livecart {
+    flex: 1; /* Takes up 25% of the space */
+    border-left: 3px solid var(--primary-orange); /* Nice accent line */
+    min-width: 250px;
+}
+
+/* --- 6. TYPOGRAPHY FIXES --- */
+/* Making the <pre> tag look good */
+pre {
+    font-family: 'Montserrat', sans-serif; /* Overriding default font */
+    font-size: 1.1rem;
+    white-space: pre-wrap; /* Wraps text so it doesn't overflow */
+}
+
+/* Scrollbar Styling (Webkit only - Chrome/Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+    
+}
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.3); 
+    border-radius: 20px;
+    
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-orange); 
+    border-radius: 20px;
+    
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #fc0202; 
+}
+
+/* --- 7. RESPONSIVE (Mobile View) --- */
+@media (max-width: 768px) {
+    #Body {
+        flex-direction: column; /* Stack Items and Cart on top of each other */
+        height: auto;
+    }
+    
+    #Items, #Livecart {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    #Header {
+        justify-content: center; /* Center logo on mobile */
+    }
+}
+
+/* --- 8. PRODUCT CARDS (SportItems) --- */
+
+/* The Card Container */
+.SportItems {
+    background: rgba(0, 0, 0, 0.4); /* Darker background to pop against the glass */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    width: 220px; /* Fixed width for uniform look */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Hover Effect */
+.SportItems:hover {
+    transform: translateY(-5px); /* Moves up slightly */
+    background: rgba(0, 0, 0, 0.6);
+    border-color: var(--primary-orange); /* Orange border on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* The Image Area */
+.card-image {
+    width: 100%;
+    height: 150px;
+    background: #333; /* Placeholder color while loading */
+    border-radius: 10px;
+    overflow: hidden; /* Cuts off image if it's too big */
+    margin-bottom: 5px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills the box without stretching */
+}
+
+/* Product Title */
+.SportItems h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Price Tag */
+.SportItems .price {
+    font-family: 'Russo One', sans-serif;
+    color: var(--primary-orange);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* Add to Cart Button */
+.SportItems button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #ff6b00, #ff8800);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.SportItems button:hover {
+    background: white;
+    color: var(--primary-orange);
+    box-shadow: 0 0 10px var(--primary-orange);
+}
+
+.SportItems button:active {
+    transform: scale(0.95); /* Click effect */
+}
+
+/* Fix for the #Items container spacing */
+#Items {
+    justify-content: center; /* Centers cards in the middle */
+    gap: 30px; /* Space between cards */
+}
+
+
+/* --- 9. SIDEBAR (LIVECART) STYLING --- */
+
+#Livecart {
+    /* 1. Make it STICKY */
+    position: sticky;
+    top: 20px; /* Stays 20px from the top of the screen */
+    
+    /* 2. Sizing constraints */
+    height: fit-content; /* Only takes as much height as it needs */
+    max-height: 85vh; /* Prevents it from being taller than the screen */
+    min-width: 300px; /* Ensures it's wide enough */
+    
+    /* 3. Internal Layout */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+    /* Keep your existing shiny glass styles (inherited from previous step) */
+    /* background, border, etc. are already applied via #Items, #Livecart selector */
+}
+
+/* Cart Header */
+.cart-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    font-size: 1.5rem;
+    font-family: 'Russo One', sans-serif;
+    color: var(--primary-orange);
+    text-shadow: none; /* Clean look for sidebar */
+}
+
+.cart-header span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Cart Items Area */
+.cart-items-container {
+    flex-grow: 1; /* Expands to fill space */
+    min-height: 100px;
+    overflow-y: auto; /* Adds scrollbar inside cart if list gets too long */
+}
+
+.empty-msg {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+/* Cart Footer (Total & Button) */
+.cart-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#cart-total {
+    color: var(--primary-orange);
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Russo One', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.checkout-btn:hover {
+    background: var(--primary-orange);
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+}
