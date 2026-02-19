@@ -30,11 +30,7 @@ $records = mysqli_query($conn, $sql);
             <?php while ($row = mysqli_fetch_assoc($records)) { ?>
             <div class="SportItems">
 
-                <div class="card-image">
-                    <!-- placeholder image -->
-                    <img src="placeholder.jpg">
-                </div>
-
+                
                 <h3><?php echo $row['ItemName']; ?></h3><br>
                 <h4>Brand: <?php echo $row['Brand']; ?></h4>
 
@@ -66,7 +62,11 @@ $records = mysqli_query($conn, $sql);
                     <span>Total</span>
                     <span id="cart-total">Rs. 0</span>
                 </div>
-                <button class="checkout-btn">Checkout</button>
+                <!-- Checkout form -->
+                <form action="checkout.php" method="post" id="checkout-form">
+                    <input type="hidden" name="cart_data" id="cart-data">
+                    <button type="submit" class="checkout-btn">Checkout</button>
+                </form>
             </div>
 
         </div>
@@ -79,11 +79,17 @@ $records = mysqli_query($conn, $sql);
 let total = 0;
 let count = 0;
 
+// JS cart array
+let cart = [];
+
+// DOM elements
 const cartContainer = document.querySelector(".cart-items-container");
 const totalSpan = document.getElementById("cart-total");
 const countSpan = document.getElementById("cart-count");
 const emptyMsg = document.querySelector(".empty-msg");
+const cartDataInput = document.getElementById("cart-data");
 
+// Add item to cart
 document.querySelectorAll(".add-btn").forEach(btn => {
     btn.addEventListener("click", () => {
 
@@ -96,7 +102,6 @@ document.querySelectorAll(".add-btn").forEach(btn => {
         const cartItem = document.createElement("div");
         cartItem.className = "cart-item";
         cartItem.innerHTML = `<span>${name}</span><span>Rs. ${price}</span>`;
-
         cartContainer.appendChild(cartItem);
 
         total += price;
@@ -104,6 +109,12 @@ document.querySelectorAll(".add-btn").forEach(btn => {
 
         totalSpan.innerText = "Rs. " + total;
         countSpan.innerText = count + " Items";
+
+        // Add item to JS cart array
+        cart.push({name: name, price: price});
+
+        // Update hidden input for PHP POST
+        cartDataInput.value = JSON.stringify(cart);
     });
 });
 </script>
