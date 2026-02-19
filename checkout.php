@@ -62,7 +62,7 @@ th {
     color:orange;
 }
 .btn {
-    width:100%;
+    width:48%;
     padding:15px;
     margin-top:20px;
     background:orange;
@@ -71,15 +71,34 @@ th {
     font-weight:bold;
     border-radius:10px;
     cursor:pointer;
+    display:inline-block;
+}
+.btn + .btn {
+    margin-left:4%;
+}
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .bill-box, .bill-box * {
+        visibility: visible;
+    }
+    .bill-box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+    }
 }
 </style>
 </head>
 
 <body>
 <div class="overlay">
-<div class="header">Sportify Arena Checkout</div>
+<div class="header">Sportz Arena</div>
 
-<div class="bill-box">
+<div class="bill-box" id="bill-box">
 <h2>Your Receipt</h2>
 <table>
 <tr>
@@ -100,11 +119,21 @@ th {
 Total: Rs. <?php echo $total; ?>
 </div>
 
-<form action="webpage.php" method="get">
+<!-- Buttons: Back to Shop & Print Bill -->
+<form action="webpage.php" method="get" style="display:inline-block;">
     <button type="submit" class="btn">Back to Shop</button>
 </form>
 
+<button class="btn" onclick="printBill()">Print Bill</button>
+
 </div>
 </div>
+
+<script>
+function printBill() {
+    window.print();
+}
+</script>
+
 </body>
 </html>
